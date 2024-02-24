@@ -7,28 +7,19 @@ import post2 from "/assets/images/post-2.jpg";
 import post3 from "/assets/images/post-3.jpg";
 import post4 from "/assets/images/post-4.jpg";
 import post5 from "/assets/images/post-5.jpg";
+import { SectionHeader } from "./SectionHeader";
+import { SectionWrapper } from "./SectionWrapper";
 
-const LatestPosts = () => {
+export const LatestPosts = () => {
   return (
     <>
-      <div className="w-full flex flex-col max-w-6xl" id="latestPosts">
-        <div className="w-full flex justify-between pb-4 mt-12">
-          <div>
-            <h4 className="text-5xl font-bold">
-              Latest{" "}
-              <span className="italic font-light tracking-tight">Posts</span>
-            </h4>
-          </div>
-          <div>
-            <p className="uppercase font-normal tracking-widest">
-              Our Recent Articles
-            </p>
-            <p className="font-light tracking-wide">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </p>
-          </div>
-        </div>
-        <Separator className="bg-zinc-900/70 mb-12" />
+      <SectionWrapper elemId="latestPosts">
+        <SectionHeader
+          title="Latest"
+          titleLastWord="Posts"
+          subtitle="our recent articles"
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        />
         <TwoColumnPostWrapper>
           <Post
             title="Solo Travel Experiences that need to be tested to try out for sure"
@@ -81,9 +72,7 @@ const LatestPosts = () => {
             postUrl="https://www.bestbuy.com"
           />
         </TwoColumnPostWrapper>
-      </div>
+      </SectionWrapper>
     </>
   );
 };
-
-export default LatestPosts;
