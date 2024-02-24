@@ -7,16 +7,15 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 export default function Header() {
   return (
     <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
-      <div className="w-full max-w-5xl flex justify-between items-center p-3 text-sm">
-        <div className="flex flex-1 px-8">
-          <AspectRatio ratio={16 / 9}>
-            <Image
-              priority
-              src={mtbLogoSvg}
-              alt="medellin travel blog logo"
-              fill
-            />
-          </AspectRatio>
+      <div className="w-full max-w-6xl flex justify-between items-center py-3 text-sm">
+        <div className="flex flex-1 relative">
+          <Image
+            priority
+            src={mtbLogoSvg}
+            alt="medellin travel blog logo"
+            height={25}
+            width={225}
+          />
         </div>
         <div className="flex items-center">
           <ul className="flex gap-4 items-center">

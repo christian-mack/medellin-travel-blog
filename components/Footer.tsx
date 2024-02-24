@@ -49,7 +49,6 @@ const Footer = () => {
               alt="medellin travel blog logo"
               width={500}
               height={136}
-              objectFit="contain"
             />
           </div>
           <div className="flex justify-center mt-4">
