@@ -3,8 +3,8 @@ import { Input } from "./ui/input";
 
 const Subscribe = () => {
   return (
-    <div className="w-full flex flex-1 green-gradient py-20 justify-center">
-      <div className="flex max-w-2xl items-center justify-center bg-zinc-200 rounded-lg">
+    <div className="w-full flex flex-1 green-gradient py-28 justify-center">
+      <div className="flex max-w-2xl items-center justify-center bg-zinc-200 rounded-lg pb-20">
         <div className="text-center items-center justify-center w-2/3">
           <div className="flex flex-col mt-12 mb-6">
             <h4 className="font-bold pb-4 text-4xl">
