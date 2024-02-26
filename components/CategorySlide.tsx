@@ -28,7 +28,6 @@ export const CategorySlide = ({
         width={540}
         height={320}
         className="rounded-3xl max-h-[320px]"
-        layout="responsive"
       />
 
       <div className="max-w-3/4 flex items-center absolute top-0 left-0 bg-brand rounded-br-xl py-2 px-4 gap-4">

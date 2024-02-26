@@ -9,7 +9,7 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
-import { PaperPlaneIcon } from "@radix-ui/react-icons";
+import { HamburgerMenuIcon, PaperPlaneIcon } from "@radix-ui/react-icons";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -54,8 +54,11 @@ export const Nav = () => {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
-          <NavigationMenuContent>
+          <NavigationMenuTrigger className="gap-2 items-center flex">
+            <HamburgerMenuIcon />
+            Menu
+          </NavigationMenuTrigger>
+          <NavigationMenuContent disableOutsidePointerEvents>
             <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
@@ -86,7 +89,7 @@ export const Nav = () => {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        <NavigationMenuItem>
+        {/* <NavigationMenuItem>
           <NavigationMenuTrigger>Components</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
@@ -101,7 +104,7 @@ export const Nav = () => {
               ))}
             </ul>
           </NavigationMenuContent>
-        </NavigationMenuItem>
+        </NavigationMenuItem> */}
       </NavigationMenuList>
     </NavigationMenu>
   );
