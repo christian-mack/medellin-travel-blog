@@ -4,14 +4,6 @@ import { getAllBlogPages, getBlogPageBySlug } from "@/lib/contentful/blogPages";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { notFound } from "next/navigation";
 
-export async function generateStaticParams() {
-  const allBlogPages = await getAllBlogPages();
-
-  return allBlogPages.map((page: any) => ({
-    slug: page.slug,
-  }));
-}
-
 export default async function Page({ params }: { params: { slug: string } }) {
   const page = await getBlogPageBySlug(params.slug);
 
@@ -30,3 +22,11 @@ export default async function Page({ params }: { params: { slug: string } }) {
     </div>
   );
 }
+
+// export async function generateStaticParams() {
+//   const allBlogPages = await getAllBlogPages();
+
+//   return allBlogPages.map((page: any) => ({
+//     slug: page.slug,
+//   }));
+// }
