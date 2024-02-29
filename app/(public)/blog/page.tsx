@@ -10,7 +10,7 @@ export default async function Page() {
   return (
     <SectionContainer>
       <SectionWrapper elemId="blog">
-        <SectionHeader
+        {/* <SectionHeader
           title="All"
           titleColor="text-zinc-900"
           titleLastWord="Posts"
@@ -20,7 +20,7 @@ export default async function Page() {
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           descriptionColor="text-white"
           separatorColor="bg-zinc-900"
-        />
+        /> */}
         <div className="grid grid-cols-3 gap-4">
           {blogPages.map((page: any) => (
             <div className="col-span-1" key={page.id}>
