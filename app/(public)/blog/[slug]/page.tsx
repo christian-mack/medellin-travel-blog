@@ -20,10 +20,10 @@ export default async function Page({ params }: { params: { slug: string } }) {
     </div>
   );
 }
-export async function generateStaticParams() {
-  const allBlogPages = await getAllBlogPages();
+// export async function generateStaticParams() {
+//   const allBlogPages = await getAllBlogPages();
 
-  return allBlogPages.map((page: any) => ({
-    slug: page.slug,
-  }));
-}
+//   return allBlogPages.map((page: any) => ({
+//     slug: page.slug,
+//   }));
+// }
