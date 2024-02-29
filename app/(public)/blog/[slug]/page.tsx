@@ -1,7 +1,5 @@
 import { RichText } from "@/components/RichText";
-import { SectionContainer } from "@/components/SectionContainer";
 import { getAllBlogPages, getBlogPageBySlug } from "@/lib/contentful/blogPages";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { notFound } from "next/navigation";
 
 export default async function Page({ params }: { params: { slug: string } }) {
@@ -22,11 +20,10 @@ export default async function Page({ params }: { params: { slug: string } }) {
     </div>
   );
 }
+export async function generateStaticParams() {
+  const allBlogPages = await getAllBlogPages();
 
-// export async function generateStaticParams() {
-//   const allBlogPages = await getAllBlogPages();
-
-//   return allBlogPages.map((page: any) => ({
-//     slug: page.slug,
-//   }));
-// }
+  return allBlogPages.map((page: any) => ({
+    slug: page.slug,
+  }));
+}
