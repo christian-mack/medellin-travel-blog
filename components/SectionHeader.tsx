@@ -2,26 +2,16 @@ import { Separator } from "@/components/ui/separator";
 
 interface SectionHeaderProps {
   title: string;
-  titleColor?: string;
   titleLastWord: string;
-  titleLastWordColor?: string;
   subtitle: string;
-  subtitleColor?: string;
   description: string;
-  descriptionColor?: string;
-  separatorColor?: string;
 }
 
 export const SectionHeader = ({
   title,
-  titleColor,
   titleLastWord,
-  titleLastWordColor,
   subtitle,
-  subtitleColor,
   description,
-  descriptionColor,
-  separatorColor,
 }: SectionHeaderProps) => {
   return (
     <>
