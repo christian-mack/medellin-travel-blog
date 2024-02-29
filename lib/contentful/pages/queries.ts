@@ -4,4 +4,20 @@ export const PAGE_GRAPHQL_FIELDS = `
     }
     slug
     title
+    blocksCollection(limit: 10) {
+        items {
+          featuredBlogPostsCollection(limit:10) {
+            items {
+              sys {
+                id
+              }
+              ... on BlogPage {
+                title
+                category
+                authorName
+              }
+            }
+          }
+        }
+      }
 `;
