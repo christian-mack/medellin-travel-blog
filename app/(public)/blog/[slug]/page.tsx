@@ -5,9 +5,9 @@ import { notFound } from "next/navigation";
 export default async function Page({ params }: { params: { slug: string } }) {
   const page = await getBlogPageBySlug(params.slug);
 
-  // if (!page) {
-  //   notFound();
-  // }
+  if (!page) {
+    notFound();
+  }
 
   return (
     <div className="w-full flex justify-center">
@@ -20,10 +20,10 @@ export default async function Page({ params }: { params: { slug: string } }) {
     </div>
   );
 }
-// export async function generateStaticParams() {
-//   const allBlogPages = await getAllBlogPages();
+export async function generateStaticParams() {
+  const allBlogPages = await getAllBlogPages();
 
-//   return allBlogPages.map((page: any) => ({
-//     slug: page.slug,
-//   }));
-// }
+  return allBlogPages.map((page: any) => ({
+    slug: page.slug,
+  }));
+}

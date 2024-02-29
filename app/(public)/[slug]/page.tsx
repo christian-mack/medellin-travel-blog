@@ -13,9 +13,9 @@ export default async function DynamicPage({
 
   console.log(params);
 
-  // if (!page) {
-  //   notFound();
-  // }
+  if (!page) {
+    notFound();
+  }
 
   return (
     <SectionContainer>
@@ -24,12 +24,12 @@ export default async function DynamicPage({
   );
 }
 
-// export async function generateStaticParams() {
-//   const pages = await getAllPages();
+export async function generateStaticParams() {
+  const pages = await getAllPages();
 
-//   console.log(pages);
+  console.log(pages);
 
-//   return pages.map((page: any) => ({
-//     slug: page.slug,
-//   }));
-// }
+  return pages.map((page: any) => ({
+    slug: page.slug,
+  }));
+}
