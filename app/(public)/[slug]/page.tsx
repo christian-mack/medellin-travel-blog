@@ -27,8 +27,6 @@ export default async function DynamicPage({
 export async function generateStaticParams() {
   const pages = await getAllPages();
 
-  console.log(pages);
-
   return pages.map((page: any) => ({
     slug: page.slug,
   }));
