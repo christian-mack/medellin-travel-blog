@@ -22,12 +22,10 @@ export default async function DynamicPage({
   );
 }
 
-export async function generateStaticParams() {
-  const pages = await getAllPages();
+// export async function generateStaticParams() {
+//   const pages = await getAllPages();
 
-  if (!pages) return;
-
-  return pages.map((page: any) => ({
-    slug: page.slug,
-  }));
-}
+//   return pages.map((page: any) => ({
+//     slug: page.slug,
+//   }));
+// }
