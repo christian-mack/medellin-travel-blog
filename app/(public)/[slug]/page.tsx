@@ -2,6 +2,8 @@ import { SectionContainer } from "@/components/SectionContainer";
 import { getAllPages, getPageBySlug } from "@/lib/contentful/pages";
 import { notFound } from "next/navigation";
 
+export const dynamicParams = false;
+
 export default async function DynamicPage({
   params,
 }: {
@@ -11,9 +13,9 @@ export default async function DynamicPage({
 
   console.log(params);
 
-  if (!page) {
-    notFound();
-  }
+  // if (!page) {
+  //   notFound();
+  // }
 
   return (
     <SectionContainer>
@@ -24,6 +26,8 @@ export default async function DynamicPage({
 
 export async function generateStaticParams() {
   const pages = await getAllPages();
+
+  console.log(pages);
 
   return pages.map((page: any) => ({
     slug: page.slug,

@@ -5,9 +5,9 @@ import { notFound } from "next/navigation";
 export default async function Page({ params }: { params: { slug: string } }) {
   const page = await getBlogPageBySlug(params.slug);
 
-  if (!page) {
-    notFound();
-  }
+  // if (!page) {
+  //   notFound();
+  // }
 
   return (
     <div className="w-full flex justify-center">

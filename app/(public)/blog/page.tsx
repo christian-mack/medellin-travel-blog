@@ -24,7 +24,7 @@ export default async function Page() {
         <div className="grid grid-cols-3 gap-4">
           {blogPages.map((page: any) => (
             <div className="col-span-1" key={page.id}>
-              {/* <Post
+              <Post
                 title={page.title}
                 category={page.category}
                 publishDate={page.publishDate}
@@ -33,7 +33,7 @@ export default async function Page() {
                 postImgUrl={page.image.url}
                 columns="three"
                 postUrl={`/blog/${page.slug}`}
-              /> */}
+              />
             </div>
           ))}
         </div>
