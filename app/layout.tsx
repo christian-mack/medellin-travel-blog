@@ -1,13 +1,8 @@
+import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 import Footer from "@/components/Footer";
 import Subscribe from "@/components/Subscribe";
 import Header from "@/components/Header";
-import { Archivo } from "@next/font/google";
-
-const archivo = Archivo({
-  subsets: ["latin"],
-  display: "swap",
-});
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -25,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={archivo.className}>
+    <html lang="en" className={GeistSans.className}>
       <body className="bg-background text-foreground">
         <Header />
         <main className="flex flex-col items-center">{children}</main>
