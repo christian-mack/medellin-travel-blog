@@ -3,16 +3,14 @@ import { Separator } from "@/components/ui/separator";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import mtbLogoSvg from "/assets/images/mtb-logo.svg";
 import Image from "next/image";
+import { ThickArrowUpIcon } from "@radix-ui/react-icons";
 
 const Footer = () => {
   return (
     <div className="bg-neutral-950 w-full text-white flex flex-col justify-center items-center">
       <div className="w-full justify-center max-w-6xl">
         <div className="flex justify-between my-14">
-          <div>
-            <p className="text-5xl">MTB</p>
-          </div>
-          <div className="text-center">
+          <div className="text-center text-sm">
             <p>LATEST ARTICLES</p>
             <ul>
               <li>Home</li>
@@ -22,7 +20,7 @@ const Footer = () => {
               <li>Contact</li>
             </ul>
           </div>
-          <div className="text-center">
+          <div className="text-center text-sm">
             <p>QUICK MENU</p>
             <ul>
               <li>Home</li>
@@ -32,13 +30,17 @@ const Footer = () => {
               <li>Contact</li>
             </ul>
           </div>
-          <div className="text-center">
+          <div className="text-center text-sm">
             <p>ACCOUNT</p>
             <ul>
               <li>Profile</li>
               <li>Bookings</li>
               <li>Tours</li>
             </ul>
+          </div>
+          <div className="flex flex-col items-center">
+            <ThickArrowUpIcon />
+            <p className="text-xl">Back to top</p>
           </div>
         </div>
         <div className="my-8">

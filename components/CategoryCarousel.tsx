@@ -23,6 +23,7 @@ export const CategoryCarousel = ({}: CategoryCarouselProps) => {
       <Swiper
         className="mySwiper"
         slidesPerView={2.5}
+        centeredSlides={true}
         spaceBetween={30}
         freeMode={true}
         rewind={true}

@@ -1,4 +1,5 @@
 import { RichText } from "@/components/RichText";
+import { SectionContainer } from "@/components/SectionContainer";
 import { getAllBlogPages, getBlogPageBySlug } from "@/lib/contentful/blogPages";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { notFound } from "next/navigation";

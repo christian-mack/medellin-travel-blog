@@ -9,7 +9,7 @@ export default async function Index() {
 
   return (
     <div className="flex-1 w-full flex flex-col items-center">
-      {/* <AboveTheFold /> */}
+      <AboveTheFold />
       <FeaturedPosts />
       <AllCategories />
       <LatestPosts />

@@ -1,11 +1,13 @@
 import AuthButton from "@/components/AuthButton";
 import Image from "next/image";
 import mtbLogoSvg from "/assets/images/mtb-logo.svg";
-import Link from "next/link";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Nav } from "./Nav";
+import { getAllPages } from "@/lib/contentful/pages";
+import { getAllBlogPages } from "@/lib/contentful/blogPages";
 
-export default function Header() {
+export default async function Header() {
+  const allPages = await getAllPages();
+
   return (
     <div className="w-full flex justify-center border-b border-b-foreground/10 h-16">
       <div className="w-full max-w-6xl flex justify-between items-center py-3 text-sm">
@@ -19,7 +21,7 @@ export default function Header() {
           />
         </div>
         <div className="flex gap-4">
-          <Nav />
+          <Nav pages={allPages} />
           <AuthButton />
         </div>
       </div>

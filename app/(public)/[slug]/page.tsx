@@ -1,4 +1,6 @@
+import { SectionContainer } from "@/components/SectionContainer";
 import { getAllPages, getPageBySlug } from "@/lib/contentful/pages";
+import { notFound } from "next/navigation";
 
 export default async function DynamicPage({
   params,
@@ -9,10 +11,14 @@ export default async function DynamicPage({
 
   console.log(params);
 
+  if (!page) {
+    notFound();
+  }
+
   return (
-    <div>
+    <SectionContainer>
       <h1>{page.title}</h1>
-    </div>
+    </SectionContainer>
   );
 }
 
