@@ -4,6 +4,8 @@ import Footer from "@/components/Footer";
 import Subscribe from "@/components/Subscribe";
 import Header from "@/components/Header";
 
+import { Analytics } from "@vercel/analytics/react";
+
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "http://localhost:3000";
@@ -26,6 +28,7 @@ export default function RootLayout({
         <main className="flex flex-col items-center">{children}</main>
         <Subscribe />
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
