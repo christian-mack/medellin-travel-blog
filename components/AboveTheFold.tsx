@@ -1,10 +1,10 @@
-import { Hero } from "@/components/Hero";
+import { HomeHero } from "@/components/HomeHero";
 import { SectionContainer } from "./SectionContainer";
 
 export const AboveTheFold = () => {
   return (
     <SectionContainer>
-      <Hero elemId="home-hero" />
+      <HomeHero elemId="home-hero" />
     </SectionContainer>
   );
 };

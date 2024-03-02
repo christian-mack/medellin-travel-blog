@@ -1,5 +1,5 @@
 import { fetchGraphQL } from "..";
-import { BLOG_PAGE_GRAPHQL_FIELDS } from "./queries";
+import { BLOG_PAGE_GRAPHQL_FIELDS } from "./query";
 
 function extractBlogPageEntries(fetchResponse: any) {
   return fetchResponse?.data?.blogPageCollection?.items;
@@ -12,8 +12,8 @@ export async function getAllBlogPages(
   // return draft content for reviewing articles before they are live
   isDraftMode = false
 ) {
-  const pages = await fetchGraphQL(
-    `query {
+  const pages = await fetchGraphQL({
+    query: `query {
           blogPageCollection(limit: ${limit}, preview: ${
             isDraftMode ? "true" : "false"
           }) {
@@ -22,15 +22,17 @@ export async function getAllBlogPages(
             }
           }
         }`,
-    isDraftMode
-  );
+    preview: isDraftMode,
+    slug: "",
+    tags: ["allBlogs"],
+  });
 
   return extractBlogPageEntries(pages);
 }
 
 export async function getBlogPageBySlug(slug: string, isDraftMode = false) {
-  const page = await fetchGraphQL(
-    `query {
+  const page = await fetchGraphQL({
+    query: `query {
           blogPageCollection(where:{slug: "${slug}"}, limit: 1, preview: ${
             isDraftMode ? "true" : "false"
           }) {
@@ -39,7 +41,9 @@ export async function getBlogPageBySlug(slug: string, isDraftMode = false) {
             }
           }
         }`,
-    isDraftMode
-  );
+    preview: isDraftMode,
+    slug: "",
+    tags: ["blog"],
+  });
   return extractBlogPageEntries(page)[0];
 }

@@ -9,7 +9,7 @@ interface HeroProps {
   elemId: string;
 }
 
-export const Hero = ({ elemId }: HeroProps) => {
+export const HomeHero = ({ elemId }: HeroProps) => {
   return (
     <div className="w-full max-w-5xl grid grid-cols-12 py-20 gap-6" id={elemId}>
       <div className="col-span-3 bg-brand rounded-md items-center justify-center flex flex-col py-8 gap-8">

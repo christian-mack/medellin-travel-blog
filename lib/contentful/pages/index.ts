@@ -11,8 +11,8 @@ export async function getAllPages(
   // return draft content for reviewing articles before they are live
   isDraftMode = false
 ) {
-  const pages = await fetchGraphQL(
-    `query {
+  const pages = await fetchGraphQL({
+    query: `query {
           pageCollection(limit: ${limit}, preview: ${
             isDraftMode ? "true" : "false"
           }) {
@@ -21,15 +21,17 @@ export async function getAllPages(
             }
           }
         }`,
-    isDraftMode
-  );
+    preview: isDraftMode,
+    slug: "",
+    tags: [],
+  });
 
   return extractPageEntries(pages);
 }
 
 export async function getPageBySlug(slug: string, isDraftMode = false) {
-  const page = await fetchGraphQL(
-    `query {
+  const page = await fetchGraphQL({
+    query: `query {
           pageCollection(where:{slug: "${slug}"}, limit: 1, preview: ${
             isDraftMode ? "true" : "false"
           }) {
@@ -38,7 +40,9 @@ export async function getPageBySlug(slug: string, isDraftMode = false) {
             }
           }
         }`,
-    isDraftMode
-  );
+    preview: isDraftMode,
+    slug: slug,
+    tags: [],
+  });
   return extractPageEntries(page)[0];
 }

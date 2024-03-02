@@ -10,8 +10,6 @@ import {
 import Link from "next/link";
 
 export const Nav = ({ pages }: { pages: any[] }) => {
-  console.log(pages);
-
   return (
     <NavigationMenu>
       <NavigationMenuList className="hidden md:flex">

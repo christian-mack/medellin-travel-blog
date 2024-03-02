@@ -1,6 +1,20 @@
 // TODO: currently hardcoded but needs to be modularized
 
-export async function fetchGraphQL(query: string, preview: boolean = false) {
+import { revalidatePath, revalidateTag } from "next/cache";
+
+interface fetchProps {
+  query: string;
+  preview: boolean;
+  slug: string;
+  tags: string[];
+}
+
+export async function fetchGraphQL({
+  query,
+  preview = false,
+  slug,
+  tags,
+}: fetchProps) {
   return fetch(
     `${process.env.CONTENTFUL_BASE_URL}/${process.env.CONTENTFUL_SPACE_ID}`,
     {
@@ -16,9 +30,10 @@ export async function fetchGraphQL(query: string, preview: boolean = false) {
         }`,
       },
       body: JSON.stringify({ query }),
-      // Associate all fetches for articles with an "articles" cache tag so content can
-      // be revalidated or updated from Contentful on publish
-      next: { tags: ["pages"] },
+      // 'tags' can be given to fetch requests for revalidation purposes
+      next: { tags },
     }
-  ).then((response) => response.json());
+  )
+    .then((response) => response.json())
+    .finally(() => revalidatePath(`/${slug}`));
 }

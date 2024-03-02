@@ -68,7 +68,7 @@ export const Post = ({
     >
       <Link href={postUrl}>
         {/* post image */}
-        <div className="w-full h-96 relative">
+        <div className="h-96 relative">
           <Image
             src={postImgUrl}
             alt={postImgAltText || "related alt text"}

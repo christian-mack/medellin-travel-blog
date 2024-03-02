@@ -1,8 +1,7 @@
-import { SectionContainer } from "@/components/SectionContainer";
+import { renderComponentByTypename } from "@/utils/contentful";
 import { getAllPages, getPageBySlug } from "@/lib/contentful/pages";
 import { notFound } from "next/navigation";
-
-export const dynamicParams = false;
+import { devLog } from "@/lib/utils";
 
 export default async function DynamicPage({
   params,
@@ -11,16 +10,28 @@ export default async function DynamicPage({
 }) {
   const page = await getPageBySlug(params.slug);
 
-  console.log(params);
-
   if (!page) {
     notFound();
   }
 
+  devLog(["\n [PAGE] \n\n", page.blocksCollection]);
+
   return (
-    <SectionContainer>
-      <h1>{page.title}</h1>
-    </SectionContainer>
+    <div className="flex flex-col">
+      {page.blocksCollection.items.map((item: any) => {
+        return (
+          <>
+            <div key={item.sys.id}>
+              {renderComponentByTypename({
+                type: item.__typename,
+                itemId: item.sys.id,
+                slug: params.slug,
+              })}
+            </div>
+          </>
+        );
+      })}
+    </div>
   );
 }
 
