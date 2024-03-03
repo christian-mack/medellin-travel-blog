@@ -26,9 +26,9 @@ export const SectionHeader = ({
 }: SectionHeaderProps) => {
   return (
     <>
-      <div className="w-full flex justify-between pb-4 mt-24">
-        <div>
-          <h4 className={cn("text-5xl font-bold", titleColor)}>
+      <div className="w-full flex flex-col md:flex-row justify-between pb-4 mt-24">
+        <div className="text-center md:text-start">
+          <h4 className={cn("text-3xl md:text-5xl font-bold", titleColor)}>
             {title}{" "}
             <span
               className={cn(
@@ -40,10 +40,10 @@ export const SectionHeader = ({
             </span>
           </h4>
         </div>
-        <div>
+        <div className="text-center md:text-start mt-6 md:mt-0">
           <p
             className={cn(
-              "uppercase font-normal tracking-widest",
+              "uppercase font-normal tracking-widest mb-2 md:mb-0",
               subtitleColor
             )}
           >

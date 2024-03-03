@@ -31,8 +31,8 @@ export const FeaturedPosts = () => {
           descriptionColor="text-white"
           separatorColor="bg-brand"
         />
-        <div className="grid grid-cols-6 gap-4">
-          <div className="col-span-4 relative">
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-4 mx-8">
+          <div className="col-span-1 md:col-span-4 relative">
             <div className="flex items-center gap-3  mt-5">
               <Badge
                 className="uppercase tracking-widest font-normal text-sm"
@@ -78,7 +78,7 @@ export const FeaturedPosts = () => {
               </div>
             </div>
           </div>
-          <div className="col-span-2">
+          <div className="col-span-1 md:col-span-2">
             <Post
               title="Minimalism in Everyday Life"
               category="lifestyle"
