@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import Subscribe from "@/components/Subscribe";
 import Header from "@/components/Header";
 
-import { GoogleTagManager } from "@next/third-parties/google";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/react";
 
 const defaultUrl = process.env.VERCEL_URL
@@ -30,6 +30,7 @@ export default function RootLayout({
         <Subscribe />
         <Footer />
         <Analytics />
+        <GoogleAnalytics gaId="G-0EY6RRH3EG" />
         <GoogleTagManager gtmId="GTM-K646DZ9C" />
       </body>
     </html>
