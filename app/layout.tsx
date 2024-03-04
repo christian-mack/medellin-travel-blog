@@ -30,8 +30,8 @@ export default function RootLayout({
         <Subscribe />
         <Footer />
         <Analytics />
-        <GoogleTagManager gtmId="GTM-K646DZ9C" />
       </body>
+      <GoogleTagManager gtmId="GTM-K646DZ9C" />
     </html>
   );
 }
