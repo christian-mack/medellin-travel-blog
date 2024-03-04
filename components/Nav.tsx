@@ -7,24 +7,44 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+
 import Link from "next/link";
+import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 
 export const Nav = ({ pages }: { pages: any[] }) => {
   return (
-    <NavigationMenu>
-      <NavigationMenuList className="hidden md:flex">
-        {pages.map((page) => {
-          return (
-            <NavigationMenuItem key={page.slug}>
-              <Link href={`/${page.slug}`} legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+    <Sheet>
+      <SheetTrigger dir="">
+        <HamburgerMenuIcon />
+      </SheetTrigger>
+      <SheetContent side="top">
+        <SheetHeader>
+          {/* <SheetTitle>Are you absolutely sure?</SheetTitle> */}
+          <SheetDescription>
+            {pages.map((page) => {
+              return (
+                <Link
+                  key={page.slug}
+                  href={`/${page.slug}`}
+                  legacyBehavior
+                  passHref
+                >
                   {page.title}
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-          );
-        })}
-      </NavigationMenuList>
-    </NavigationMenu>
+                </Link>
+              );
+            })}
+          </SheetDescription>
+        </SheetHeader>
+      </SheetContent>
+    </Sheet>
   );
 };
