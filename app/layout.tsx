@@ -6,7 +6,6 @@ import Header from "@/components/Header";
 
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/react";
-import { GTMNoScript, GTMScript } from "@/lib/gtm";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -31,10 +30,9 @@ export default function RootLayout({
         <Subscribe />
         <Footer />
         <Analytics />
+        <GoogleTagManager gtmId="GTM-K646DZ9C" />
+        <GoogleAnalytics gaId="G-0EY6RRH3EG" />
       </body>
-      <GTMNoScript />
-      <GTMScript />
-      {/* <GoogleTagManager gtmId="GTM-K646DZ9C" /> */}
     </html>
   );
 }
