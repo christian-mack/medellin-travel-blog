@@ -31,7 +31,6 @@ export default async function Page() {
                 authorName={page.authorName}
                 avatarImgUrl="https://picsum.photos/200"
                 postImgUrl={page.image.url}
-                columns="three"
                 postUrl={`/blog/${page.slug}`}
               />
             </div>

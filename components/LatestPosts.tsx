@@ -28,7 +28,6 @@ export const LatestPosts = () => {
             authorName="Christian Mack"
             avatarImgUrl="https://picsum.photos/200"
             postImgUrl={post1}
-            columns="two"
             postUrl="https://www.google.com"
           />
           <Post
@@ -38,7 +37,6 @@ export const LatestPosts = () => {
             authorName="Fred Hayes"
             avatarImgUrl="https://picsum.photos/200"
             postImgUrl={post2}
-            columns="two"
             postUrl="https://www.yahoo.com"
           />
           <Post
@@ -48,7 +46,6 @@ export const LatestPosts = () => {
             authorName="Chelsey Mack"
             avatarImgUrl="https://picsum.photos/200"
             postImgUrl={post3}
-            columns="three"
             postUrl="https://www.walmart.com"
           />
           <Post
@@ -58,7 +55,6 @@ export const LatestPosts = () => {
             authorName="Kai Moore"
             avatarImgUrl="https://picsum.photos/200"
             postImgUrl={post4}
-            columns="three"
             postUrl="https://www.apple.com"
           />
           <Post
@@ -68,7 +64,6 @@ export const LatestPosts = () => {
             authorName="Fred Hayes"
             avatarImgUrl="https://picsum.photos/200"
             postImgUrl={post5}
-            columns="three"
             postUrl="https://www.bestbuy.com"
           />
         </TwoColumnPostWrapper>

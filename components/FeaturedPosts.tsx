@@ -86,7 +86,6 @@ export const FeaturedPosts = () => {
               authorName="Liezel Smith"
               avatarImgUrl="https://picsum.photos/200"
               postImgUrl={featuredPost1}
-              columns="three"
               postUrl="https://www.bestbuy.com"
             />
           </div>
