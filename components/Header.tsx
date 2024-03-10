@@ -10,7 +10,7 @@ export default async function Header() {
 
   return (
     <div className="w-full flex justify-center border-b border-b-foreground/10 h-16">
-      <div className="w-full max-w-6xl flex justify-between items-center py-3 text-sm">
+      <div className="w-full max-w-6xl flex justify-between items-center py-3 text-sm bg-white z-[1000]">
         <div className="flex flex-1 relative">
           <Image
             priority

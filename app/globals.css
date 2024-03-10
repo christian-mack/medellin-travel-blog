@@ -49,15 +49,6 @@
   }
 }
 
-@layer base {
-  * {
-    /*  */
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-}
-
 .green-gradient {
   background: rgb(193, 255, 114);
   background: linear-gradient(

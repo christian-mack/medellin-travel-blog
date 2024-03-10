@@ -2,6 +2,7 @@ import { createClient } from "@/utils/supabase/server";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { IconLogout, IconLogin } from "@tabler/icons-react";
 
 export default async function AuthButton() {
   const supabase = createClient();
@@ -22,12 +23,12 @@ export default async function AuthButton() {
     <div className="flex items-center gap-4">
       {/* Hey, {user.email}! */}
       <form action={signOut}>
-        <Button variant="lime">Logout</Button>
+        <Button variant="default">Logout</Button>
       </form>
     </div>
   ) : (
     <Link href="/login" className="">
-      <Button variant="lime">Login</Button>
+      <Button variant="outline">Login</Button>
     </Link>
   );
 }

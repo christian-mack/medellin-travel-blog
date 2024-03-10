@@ -55,10 +55,10 @@ export default function Login({
   };
 
   return (
-    <div className="flex-1 flex flex-col w-full px-8 sm:max-w-2xl justify-center gap-2 m-36">
+    <div className="flex flex-col w-full px-8 sm:max-w-2xl justify-center gap-2 h-screen">
       <Link
         href="/"
-        className="absolute left-12 top-24 py-2 px-4 rounded-md no-underline text-foreground bg-btn-background hover:bg-btn-background-hover flex items-center group text-sm"
+        className="absolute left-2 top-4 py-2 px-4 rounded-md no-underline text-foreground bg-btn-background hover:bg-btn-background-hover flex items-center group text-sm"
       >
         <Button variant="destructive">
           <ThickArrowLeftIcon className="mr-2" />

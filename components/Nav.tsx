@@ -1,12 +1,5 @@
 "use client";
 import React from "react";
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
 
 import {
   Sheet,
@@ -29,7 +22,7 @@ export const Nav = ({ pages }: { pages: any[] }) => {
       <SheetContent side="top">
         <SheetHeader>
           {/* <SheetTitle>Are you absolutely sure?</SheetTitle> */}
-          <SheetDescription>
+          <SheetDescription className="flex flex-col mt-10">
             {pages.map((page) => {
               return (
                 <Link
@@ -38,7 +31,7 @@ export const Nav = ({ pages }: { pages: any[] }) => {
                   legacyBehavior
                   passHref
                 >
-                  {page.title}
+                  <span className="text-6xl">{page.title}</span>
                 </Link>
               );
             })}
