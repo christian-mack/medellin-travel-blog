@@ -14,7 +14,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
       <div className="w-full max-w-5xl bg-slate-200">
         <h1>{page.title}</h1>
         <p>{page.authorName}</p>
-        <p>{page.category}</p>
+        <p>{page.category.title}</p>
         <RichText data={page.content.json} />
       </div>
     </div>

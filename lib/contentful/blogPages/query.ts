@@ -19,5 +19,7 @@ export const BLOG_PAGE_GRAPHQL_FIELDS = `
     }
     publishDate
     authorName
-    category
+    category {
+      title
+    }
 `;

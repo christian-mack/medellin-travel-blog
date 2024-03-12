@@ -1,15 +1,14 @@
-import Image from "next/image";
-
-import { Post } from "@/components/Post";
-import { getAllBlogPages } from "@/lib/contentful/blogPages";
 import Header from "@/components/organisms/header";
-
+import Image from "next/image";
 import mtnsImg from "/assets/images/colombian-mountains.jpg";
 import { getAllCategories } from "@/lib/contentful/category";
 import Link from "next/link";
 
-export default async function Index() {
-  const blogPages = await getAllBlogPages();
+export default async function Layout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const categories = await getAllCategories();
 
   return (
@@ -41,20 +40,9 @@ export default async function Index() {
         </div>
       </div>
 
-      {/* blog list section */}
+      {/* right div scrolls on big screens. no scroll on mobile. */}
       <div className="grid col-span-12 lg:col-span-6 w-full h-screen  sm:overflow-scroll">
-        {blogPages.map((page: any) => (
-          <Post
-            key={page.id}
-            title={page.title}
-            category={page.category.title}
-            publishDate={page.publishDate}
-            authorName={page.authorName}
-            avatarImgUrl="https://picsum.photos/200"
-            postImgUrl={page.image.url}
-            postUrl={`/blog/${page.slug}`}
-          />
-        ))}
+        {children}
       </div>
     </div>
   );
