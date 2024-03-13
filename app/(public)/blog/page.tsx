@@ -6,7 +6,7 @@ export default async function Page() {
   const blogPages = await getAllBlogPages();
 
   return (
-    <RightColumnScroll heading="Get inspired by from stories of adventure.">
+    <RightColumnScroll heading="Blog">
       {blogPages.map((page: any) => (
         <Post
           key={page.id}
