@@ -7,8 +7,8 @@ export const CATEGORY_GRAPHQL_FIELDS = `
     subTitle
     description
     image {
+      url
       title
-      fileName
       description
     }
 `;

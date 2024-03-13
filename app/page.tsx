@@ -19,7 +19,7 @@ export default async function Index() {
         <Image src={mtnsImg} alt="" className="object-cover" fill />
         <div className="relative grid grid-cols-12 grid-rows-3 h-screen z-[2]">
           <Header />
-          <div className="col-span-12 row-start-3 flex flex-col justify-end px-4 pb-4">
+          <div className="col-span-12 row-start-3 flex flex-col justify-end px-4 md:px-8 pb-4 md:pb-8">
             <div className="w-full mb-6">
               <h1 className="text-white/90 text-4xl">
                 Embrace <span className="italic">Adventure </span> in the city
@@ -50,7 +50,6 @@ export default async function Index() {
             category={page.category.title}
             publishDate={page.publishDate}
             authorName={page.authorName}
-            avatarImgUrl="https://picsum.photos/200"
             postImgUrl={page.image.url}
             postUrl={`/blog/${page.slug}`}
           />

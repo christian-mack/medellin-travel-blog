@@ -1,5 +1,7 @@
 import { RichText } from "@/components/RichText";
+import RightColumnScroll from "@/components/templates/rightColumnScroll";
 import { getAllBlogPages, getBlogPageBySlug } from "@/lib/contentful/blogPages";
+import { devLog } from "@/lib/utils";
 import { notFound } from "next/navigation";
 
 export default async function Page({ params }: { params: { slug: string } }) {
@@ -9,15 +11,18 @@ export default async function Page({ params }: { params: { slug: string } }) {
     notFound();
   }
 
+  devLog([page]);
+
   return (
-    <div className="w-full flex justify-center">
-      <div className="w-full max-w-5xl bg-slate-200">
-        <h1>{page.title}</h1>
-        <p>{page.authorName}</p>
-        <p>{page.category.title}</p>
-        <RichText data={page.content.json} />
+    <RightColumnScroll heading={page.title} bgImg={page.image.url}>
+      <div className="w-full flex justify-center">
+        <div className="w-full max-w-5xl bg-slate-200">
+          <p>{page.authorName}</p>
+          <p>{page.category.title}</p>
+          <RichText data={page.content.json} />
+        </div>
       </div>
-    </div>
+    </RightColumnScroll>
   );
 }
 export async function generateStaticParams() {

@@ -30,6 +30,28 @@ export async function getAllBlogPages(
   return extractBlogPageEntries(pages);
 }
 
+export async function getAllBlogPagesByCategory(
+  category: string,
+  isDraftMode = false,
+  limit = 10
+) {
+  const pages = await fetchGraphQL({
+    query: `query {
+          blogPageCollection(where:{category: {slug: "${category}"}}, limit: ${limit}, preview: ${
+            isDraftMode ? "true" : "false"
+          }) {
+            items {
+              ${BLOG_PAGE_GRAPHQL_FIELDS}
+            }
+          }
+        }`,
+    preview: isDraftMode,
+    slug: "",
+    tags: ["blog"],
+  });
+  return extractBlogPageEntries(pages);
+}
+
 export async function getBlogPageBySlug(slug: string, isDraftMode = false) {
   const page = await fetchGraphQL({
     query: `query {
