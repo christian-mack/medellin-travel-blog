@@ -1,8 +1,16 @@
-import { RichText } from "@/components/RichText";
-import RightColumnScroll from "@/components/templates/rightColumnScroll";
+import AuthorCard from "@/components/molecules/authorCard";
+import BackModeHeader from "@/components/molecules/backModeHeader";
+import BlogContent from "@/components/molecules/blogContent";
+import NewsletterSignUp from "@/components/molecules/newsletterSignUp";
+import SocialLinks from "@/components/molecules/socialLinks";
+import Comments from "@/components/organisms/comments";
+import RelatedPosts from "@/components/organisms/relatedPosts";
+import RightColumnScroll, {
+  RightColumnScrollInner,
+} from "@/components/templates/rightColumnScroll";
 import { getAllBlogPages, getBlogPageBySlug } from "@/lib/contentful/blogPages";
-import { devLog } from "@/lib/utils";
 import { notFound } from "next/navigation";
+import BreadCrumbHeader from "@/components/molecules/breadCrumbHeader";
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const page = await getBlogPageBySlug(params.slug);
@@ -11,17 +19,18 @@ export default async function Page({ params }: { params: { slug: string } }) {
     notFound();
   }
 
-  devLog([page]);
-
   return (
     <RightColumnScroll heading={page.title} bgImg={page.image.url}>
-      <div className="w-full flex justify-center">
-        <div className="w-full max-w-5xl bg-slate-200">
-          <p>{page.authorName}</p>
-          <p>{page.category.title}</p>
-          <RichText data={page.content.json} />
-        </div>
-      </div>
+      <RightColumnScrollInner>
+        <BackModeHeader />
+        <BreadCrumbHeader />
+        <BlogContent page={page} />
+        <SocialLinks />
+        <AuthorCard />
+        <Comments />
+        <NewsletterSignUp />
+        <RelatedPosts />
+      </RightColumnScrollInner>
     </RightColumnScroll>
   );
 }

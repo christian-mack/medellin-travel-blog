@@ -1,10 +1,12 @@
+import BackButton from "@/components/atoms/backButton";
 import { ModeToggle } from "@/components/atoms/darkModeToggle";
-import RightColumnScroll from "@/components/templates/rightColumnScroll";
-import { Button } from "@/components/ui/button";
+import BackModeHeader from "@/components/molecules/backModeHeader";
+import RightColumnScroll, {
+  RightColumnScrollInner,
+} from "@/components/templates/rightColumnScroll";
 import { Separator } from "@/components/ui/separator";
 import { getAllBlogPagesByCategory } from "@/lib/contentful/blogPages";
 import { getAllCategories, getCategoryBySlug } from "@/lib/contentful/category";
-import { MoonIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -19,14 +21,8 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   return (
     <RightColumnScroll heading={`${params.slug}`} bgImg={page.image.url}>
-      <div className="w-full flex flex-col justify-center px-5">
-        <div className="w-full flex justify-end mt-10">
-          {/* <Button variant="link">
-            <MoonIcon width={20} height={20} className="mr-1" />
-            Dark
-          </Button> */}
-          <ModeToggle />
-        </div>
+      <RightColumnScrollInner>
+        <BackModeHeader />
         <div className="w-full mt-16 flex flex-col gap-16 mb-20">
           {posts.map((post: any) => {
             return (
@@ -51,7 +47,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
             );
           })}
         </div>
-      </div>
+      </RightColumnScrollInner>
     </RightColumnScroll>
   );
 }

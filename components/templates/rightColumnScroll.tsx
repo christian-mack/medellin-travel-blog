@@ -11,6 +11,14 @@ export function RightColumnScrollBase({
   return <div className="grid grid-cols-12 w-full">{children}</div>;
 }
 
+export function RightColumnScrollInner({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return <div className="w-full flex flex-col px-5 mt-10">{children}</div>;
+}
+
 interface RightColumnScrollProps {
   children: React.ReactNode;
   heading: string;
@@ -31,7 +39,7 @@ export default function RightColumnScroll({
         <Image src={bgImg || mtnsImg} alt="" className="object-cover" fill />
         <div className="relative grid grid-cols-12 grid-rows-3 h-screen z-[2]">
           <Header />
-          <div className="col-span-12 row-start-3 flex flex-col justify-end px-4 pb-4">
+          <div className="col-span-12 row-start-3 flex flex-col justify-end px-6 pb-8">
             <div className="w-full mb-6">
               <h1 className="text-white/90 text-4xl">{heading}</h1>
             </div>
