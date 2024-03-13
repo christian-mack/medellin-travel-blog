@@ -1,3 +1,4 @@
+import { ModeToggle } from "@/components/atoms/darkModeToggle";
 import RightColumnScroll from "@/components/templates/rightColumnScroll";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -20,12 +21,13 @@ export default async function Page({ params }: { params: { slug: string } }) {
     <RightColumnScroll heading={`${params.slug}`} bgImg={page.image.url}>
       <div className="w-full flex flex-col justify-center px-5">
         <div className="w-full flex justify-end mt-10">
-          <Button variant="link">
+          {/* <Button variant="link">
             <MoonIcon width={20} height={20} className="mr-1" />
             Dark
-          </Button>
+          </Button> */}
+          <ModeToggle />
         </div>
-        <div className="w-full mt-16 flex flex-col gap-16">
+        <div className="w-full mt-16 flex flex-col gap-16 mb-20">
           {posts.map((post: any) => {
             return (
               <Link key={post.title} href={`/blog/${post.slug}`}>
