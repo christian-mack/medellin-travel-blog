@@ -5,13 +5,7 @@ function extractBlogPageEntries(fetchResponse: any) {
   return fetchResponse?.data?.blogPageCollection?.items;
 }
 
-export async function getAllBlogPages(
-  // For this demo set the default limit to always return 3 articles.
-  limit = 10,
-  // By default this function will return published content but will provide an option to
-  // return draft content for reviewing articles before they are live
-  isDraftMode = false
-) {
+export async function getAllBlogPages(limit = 50, isDraftMode = false) {
   const pages = await fetchGraphQL({
     query: `query {
           blogPageCollection(limit: ${limit}, preview: ${
@@ -64,7 +58,7 @@ export async function getBlogPageBySlug(slug: string, isDraftMode = false) {
           }
         }`,
     preview: isDraftMode,
-    slug: "",
+    slug: `blog/${slug}`,
     tags: ["blog"],
   });
   return extractBlogPageEntries(page)[0];

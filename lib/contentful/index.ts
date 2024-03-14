@@ -5,7 +5,7 @@ import { revalidatePath, revalidateTag } from "next/cache";
 interface fetchProps {
   query: string;
   preview: boolean;
-  slug: string;
+  slug?: string;
   tags: string[];
 }
 
