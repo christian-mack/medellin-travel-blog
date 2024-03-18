@@ -3,9 +3,10 @@ import {
   getAllPages,
   getPageBySlug,
   getPagesBySlug,
+  getPagesByType,
 } from "@/lib/contentful/page";
 import { notFound } from "next/navigation";
-import { devLog } from "@/lib/utils";
+import { devLog, devLogHeader } from "@/lib/utils";
 import RightColumnScroll from "@/components/templates/rightColumnScroll";
 import BlogPage from "@/components/templates/blogPage";
 import { getBlogPageBySlug } from "@/lib/contentful/blog";
@@ -20,7 +21,7 @@ export default async function DynamicPage({
   if (!page) {
     notFound();
   }
-  devLog(["\n PAGE: [slug2] \n\n", page]);
+  // devLog(["\n PAGE: [slug2] \n\n", page]);
 
   switch (page.type) {
     case "Blog":
@@ -70,21 +71,15 @@ export default async function DynamicPage({
 }
 
 export async function generateStaticParams() {
-  const pages = await getAllPages();
+  const blogPages = await getPagesByType("Blog");
 
-  const secondLevelSlugs = pages.map((page: any) => {
-    const { items } = page.blocksCollection;
+  let slugs: any[] = [];
 
-    items.map((item: any) => {
-      const { __typename } = item;
-
-      if (__typename.toLowerCase() === "blog") {
-        return { slug: `${page.slug}/${item.slug}` };
-      } else {
-        slug: page.slug;
-      }
-    });
+  blogPages.map((page: any) => {
+    page.blocksCollection.items.map((block: any) =>
+      slugs.push(`${page.slug}/${block.slug}`)
+    );
   });
 
-  return secondLevelSlugs;
+  return slugs;
 }

@@ -15,7 +15,7 @@ interface BlogPageProps {
 }
 
 export default async function BlogPage({ data }: BlogPageProps) {
-  devLog(["[slug2]: BlogPage Template", data]);
+  // devLog(["[slug2]: BlogPage Template", data]);
 
   return (
     <RightColumnScrollInner>
