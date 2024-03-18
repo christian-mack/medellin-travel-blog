@@ -1,5 +1,3 @@
-// TODO: currently hardcoded but needs to be modularized
-
 import { revalidatePath, revalidateTag } from "next/cache";
 
 interface fetchProps {
@@ -35,5 +33,8 @@ export async function fetchGraphQL({
     }
   )
     .then((response) => response.json())
-    .finally(() => revalidatePath(`/${slug}`));
+    .finally(() => {
+      revalidatePath(`/${slug}`);
+      revalidateTag(tags[0]);
+    });
 }

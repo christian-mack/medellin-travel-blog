@@ -37,38 +37,7 @@ export function Menu() {
                   <Link href="/about-us">About</Link>
                 </Button>
               </SheetClose>
-
-              <SheetClose asChild>
-                <Button variant="link" className="text-5xl p-0 text-white">
-                  <Link href="/blog">Blog</Link>
-                </Button>
-              </SheetClose>
             </div>
-            {/* <div className="flex items-end gap-6">
-              <SheetClose asChild>
-                <Button variant="link" className="text-2xl p-0 text-white">
-                  Save changes
-                </Button>
-              </SheetClose>
-
-              <SheetClose asChild>
-                <Button variant="link" className="text-2xl p-0 text-white">
-                  Save changes
-                </Button>
-              </SheetClose>
-
-              <SheetClose asChild>
-                <Button variant="link" className="text-2xl p-0 text-white">
-                  Save changes
-                </Button>
-              </SheetClose>
-
-              <SheetClose asChild>
-                <Button variant="link" className="text-2xl p-0 text-white">
-                  Save changes
-                </Button>
-              </SheetClose>
-            </div> */}
           </div>
         </div>
       </SheetContent>

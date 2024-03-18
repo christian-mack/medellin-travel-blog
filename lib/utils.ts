@@ -9,8 +9,12 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 // must pass devLog an array or template string to work pro
-export function devLog(data: any[]): void {
+export function devLog(data: any): void {
   if (process.env.NODE_ENV !== "production") {
-    console.log(...data);
+    console.log("\n [devLog] \n", ...data);
   }
+}
+
+export function devLogHeader(text: string) {
+  return `\n ${text} \n\n`;
 }

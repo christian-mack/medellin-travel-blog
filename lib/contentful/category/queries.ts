@@ -6,9 +6,4 @@ export const CATEGORY_GRAPHQL_FIELDS = `
     title
     subTitle
     description
-    image {
-      url
-      title
-      description
-    }
 `;

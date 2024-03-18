@@ -1,22 +1,11 @@
-/**
- * This file could be split into two if needs change but they are virtually identical as of now
- *
- */
 import Image, { StaticImageData } from "next/image";
-
-import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Separator } from "@/components/ui/separator";
-import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { ArrowTopRightIcon, PlusIcon } from "@radix-ui/react-icons";
-import { bebas } from "@/app/fonts";
 interface PostProps {
   title: string;
   category: string;
-  authorName: string;
+  authorName?: string;
   postUrl: string;
-  publishDate: string;
+  publishDate?: string;
   postImgUrl: string | StaticImageData;
   postImgAltText?: string;
 }

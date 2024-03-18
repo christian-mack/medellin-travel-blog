@@ -1,7 +1,13 @@
-import { renderComponentByTypename } from "@/utils/contentful";
-import { getAllPages, getPageBySlug } from "@/lib/contentful/pages";
+import {
+  getAllPages,
+  getPageBySlug,
+  getPagesBySlug,
+} from "@/lib/contentful/page";
 import { notFound } from "next/navigation";
 import { devLog } from "@/lib/utils";
+import { getAllCategories } from "@/lib/contentful/category";
+import DefaultPage from "@/components/templates/defaultPage";
+import CategoryListPage from "@/components/templates/categoryListPage";
 
 export default async function DynamicPage({
   params,
@@ -9,30 +15,29 @@ export default async function DynamicPage({
   params: { slug: string };
 }) {
   const page = await getPageBySlug(params.slug);
+  const categories = await getAllCategories();
 
   if (!page) {
     notFound();
   }
 
-  devLog(["\n [PAGE] \n\n", page.blocksCollection]);
+  const {
+    blocksCollection: { items },
+  } = page;
 
-  return (
-    <div className="flex flex-col">
-      {page.blocksCollection.items.map((item: any) => {
-        return (
-          <>
-            <div key={item.sys.id}>
-              {renderComponentByTypename({
-                type: item.__typename,
-                itemId: item.sys.id,
-                slug: params.slug,
-              })}
-            </div>
-          </>
-        );
-      })}
-    </div>
-  );
+  const isCategoryListPage =
+    categories &&
+    categories.some((category: any) => params.slug === category.slug);
+
+  switch (isCategoryListPage) {
+    case true:
+      const pages = await getPagesBySlug(params.slug);
+      return <CategoryListPage slug={params.slug} pages={pages} />;
+    case false:
+      return <DefaultPage items={items} slug={params.slug} page={page} />;
+    default:
+      return <DefaultPage items={items} slug={params.slug} page={page} />;
+  }
 }
 
 export async function generateStaticParams() {

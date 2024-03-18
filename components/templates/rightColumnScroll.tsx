@@ -47,7 +47,7 @@ export default function RightColumnScroll({
               <div className="w-full">
                 <ul className="flex text-white w-full gap-4">
                   {categories.map((category: any) => (
-                    <li>
+                    <li key={category.id}>
                       <Link href={`/blog/category/${category.slug}`}>
                         {category.title}
                       </Link>

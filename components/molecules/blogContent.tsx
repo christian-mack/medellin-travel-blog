@@ -6,11 +6,15 @@ interface BlogContentProps {
 }
 
 export default function BlogContent({ page }: BlogContentProps) {
+  const {
+    category: { title },
+    content: { json },
+  } = page;
+
   return (
     <div className="w-full dark:text-white/90 max-w-5xl">
-      <p>{page.authorName}</p>
-      <p>{page.category.title}</p>
-      <RichText data={page.content.json} />
+      <p>{title}</p>
+      <RichText data={json} />
     </div>
   );
 }

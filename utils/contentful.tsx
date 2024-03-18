@@ -14,6 +14,7 @@ import ContactUsForm from "@/components/contentful/contact-form";
 import Hero from "@/components/contentful/hero";
 import HeroCarousel from "@/components/contentful/hero-carousel";
 import HeroInformational from "@/components/contentful/hero-informational";
+import BlogPage from "@/components/templates/blogPage";
 
 interface renderComponentByTypenameProps {
   type: any;
@@ -27,6 +28,8 @@ export const renderComponentByTypename = ({
   slug,
 }: renderComponentByTypenameProps) => {
   switch (type) {
+    case "Blog":
+      return <BlogPage itemId={itemId} slug={slug} />;
     case "Hero":
       return <Hero itemId={itemId} slug={slug} />;
     case "HeroCarousel":
