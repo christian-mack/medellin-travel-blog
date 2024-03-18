@@ -77,7 +77,7 @@ export async function generateStaticParams() {
 
   blogPages.map((page: any) => {
     page.blocksCollection.items.map((block: any) =>
-      slugs.push({ slug: `${page.slug}/${block.slug}` })
+      slugs.push({ slug: page.slug, slug2: block.slug })
     );
   });
 
