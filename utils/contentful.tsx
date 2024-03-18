@@ -28,8 +28,6 @@ export const renderComponentByTypename = ({
   slug,
 }: renderComponentByTypenameProps) => {
   switch (type) {
-    case "Blog":
-      return <BlogPage itemId={itemId} slug={slug} />;
     case "Hero":
       return <Hero itemId={itemId} slug={slug} />;
     case "HeroCarousel":
