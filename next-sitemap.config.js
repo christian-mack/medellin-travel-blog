@@ -2,6 +2,6 @@
 
 module.exports = {
   siteUrl: "https://www.medellintravelblog.com",
-  generateIndexSitemap: false,
+  generateIndexSitemap: true,
   generateRobotsTxt: true,
 };
