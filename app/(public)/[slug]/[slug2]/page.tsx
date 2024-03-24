@@ -10,24 +10,30 @@ import { devLog, devLogHeader } from "@/lib/utils";
 import RightColumnScroll from "@/components/templates/rightColumnScroll";
 import BlogPage from "@/components/templates/blogPage";
 import { getBlogPageBySlug } from "@/lib/contentful/blog";
+import { TypePage, TypePageFields } from "@/types/contentful";
+import { PageT } from "@/types";
 
 export default async function DynamicPage({
   params,
 }: {
   params: { slug: string; slug2: string };
 }) {
-  const page = await getPageBySlug(params.slug);
+  const page: PageT = await getPageBySlug(params.slug);
 
   if (!page) {
     notFound();
   }
-  // devLog(["\n PAGE: [slug2] \n\n", page]);
+  devLog(["\n PAGE: [slug2] \n\n", page]);
 
   switch (page.type) {
     case "Blog":
       const blogData = await getBlogPageBySlug(params.slug2);
       return (
-        <RightColumnScroll heading={blogData.title} bgImg={blogData.image.url}>
+        <RightColumnScroll
+          heading={blogData.title}
+          bgImg={blogData.image.url}
+          category={blogData.category.slug}
+        >
           <BlogPage data={blogData} />
         </RightColumnScroll>
       );

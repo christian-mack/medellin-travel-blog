@@ -13,7 +13,6 @@ export default function BlogContent({ page }: BlogContentProps) {
 
   return (
     <div className="w-full dark:text-white/90 max-w-5xl">
-      <p>{title}</p>
       <RichText data={json} />
     </div>
   );

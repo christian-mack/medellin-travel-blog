@@ -1,8 +1,5 @@
-import { getBlogPageBySlug } from "@/lib/contentful/blog";
-import { devLog } from "@/lib/utils";
 import { RightColumnScrollInner } from "./rightColumnScroll";
 import BlogContent from "../molecules/blogContent";
-import BackModeHeader from "../molecules/backModeHeader";
 import BreadCrumbHeader from "../molecules/breadCrumbHeader";
 import SocialLinks from "../molecules/socialLinks";
 import AuthorCard from "../molecules/authorCard";
@@ -15,12 +12,13 @@ interface BlogPageProps {
 }
 
 export default async function BlogPage({ data }: BlogPageProps) {
-  // devLog(["[slug2]: BlogPage Template", data]);
+  const {
+    category: { slug },
+  } = data;
 
   return (
     <RightColumnScrollInner>
-      <BackModeHeader />
-      <BreadCrumbHeader />
+      <BreadCrumbHeader category={slug} author="Author" />
       <BlogContent page={data} />
       <SocialLinks />
       <AuthorCard />

@@ -9,6 +9,7 @@ export default function BackButton() {
 
   return (
     <Button
+      id="backButton"
       variant="link"
       className="p-0 text-lg items-center"
       onClick={() => router.back()}

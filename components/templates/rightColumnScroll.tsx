@@ -23,6 +23,7 @@ interface RightColumnScrollProps {
   children: React.ReactNode;
   heading: string;
   categories?: React.ReactNode[];
+  category?: string;
   bgImg?: string;
 }
 
@@ -31,6 +32,7 @@ export default function RightColumnScroll({
   heading,
   bgImg,
   categories,
+  category,
 }: RightColumnScrollProps) {
   return (
     <>
@@ -40,8 +42,9 @@ export default function RightColumnScroll({
         <div className="relative grid grid-cols-12 grid-rows-3 h-screen z-[2]">
           <Header />
           <div className="col-span-12 row-start-3 flex flex-col justify-end px-6 pb-8">
-            <div className="w-full mb-6">
-              <h1 className="text-white/90 text-4xl">{heading}</h1>
+            <div className="w-full mb-6 text-white/90">
+              {category && <Link href={`/${category}`}>{category}</Link>}
+              <h1 className="text-4xl">{heading}</h1>
             </div>
             {categories && (
               <div className="w-full">
