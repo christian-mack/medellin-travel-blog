@@ -2,6 +2,7 @@ import Header from "@/components/organisms/header";
 import mtnsImg from "/assets/images/colombian-mountains.jpg";
 import Image from "next/image";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 export function RightColumnScrollBase({
   children,
@@ -13,10 +14,16 @@ export function RightColumnScrollBase({
 
 export function RightColumnScrollInner({
   children,
+  styles,
 }: {
   children: React.ReactNode;
+  styles?: string;
 }) {
-  return <div className="w-full flex flex-col px-5 mt-10">{children}</div>;
+  return (
+    <div className={cn("w-full flex flex-col px-5 mt-10", styles)}>
+      {children}
+    </div>
+  );
 }
 
 interface RightColumnScrollProps {
@@ -41,7 +48,7 @@ export default function RightColumnScroll({
         <Image src={bgImg || mtnsImg} alt="" className="object-cover" fill />
         <div className="relative grid grid-cols-12 grid-rows-3 h-screen z-[2]">
           <Header />
-          <div className="col-span-12 row-start-3 flex flex-col justify-end px-6 pb-8">
+          <div className="col-span-12 row-start-3 flex flex-col justify-end px-[60px] pb-8">
             <div className="w-full mb-6 text-white/90">
               {category && <Link href={`/${category}`}>{category}</Link>}
               <h1 className="text-4xl">{heading}</h1>

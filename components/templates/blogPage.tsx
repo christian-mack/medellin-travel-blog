@@ -6,19 +6,27 @@ import AuthorCard from "../molecules/authorCard";
 import Comments from "../organisms/comments";
 import NewsletterSignUp from "../molecules/newsletterSignUp";
 import RelatedPosts from "../organisms/relatedPosts";
+import { TypeBlogFields } from "@/types/contentful";
 
 interface BlogPageProps {
-  data: any;
+  data: TypeBlogFields;
 }
 
 export default async function BlogPage({ data }: BlogPageProps) {
   const {
     category: { slug },
+    authorName,
+    publishDate,
   } = data;
 
   return (
-    <RightColumnScrollInner>
-      <BreadCrumbHeader category={slug} author="Author" />
+    <RightColumnScrollInner styles="px-[60px]">
+      <BreadCrumbHeader
+        category={slug}
+        author={authorName}
+        publishDate={publishDate || "Publish Date Not Found"}
+        timeToRead="4"
+      />
       <BlogContent page={data} />
       <SocialLinks />
       <AuthorCard />
