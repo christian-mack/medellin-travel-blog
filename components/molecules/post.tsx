@@ -20,9 +20,9 @@ export const Post = ({
   postImgAltText,
 }: PostProps) => {
   return (
-    <Link href={postUrl} className="relative h-80">
+    <Link href={postUrl} className="relative">
       <div className="image-overlay h-[60%] bottom-0 w-screen absolute z-[0] bg-gradient-to-b from-transparent to-zinc-900/90" />
-      <div className="h-full w-full pl-6 pr-16 sm:pr-20 pb-6">
+      <div className="h-80 w-full pl-6 pr-16 sm:pr-20 pb-6">
         <Image
           src={postImgUrl}
           alt={postImgAltText || "related alt text"}

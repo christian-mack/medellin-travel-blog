@@ -51,7 +51,7 @@ export default function RightColumnScroll({
           <div className="col-span-12 row-start-3 flex flex-col justify-end px-[60px] pb-8">
             <div className="w-full mb-6 text-white/90">
               {category && <Link href={`/${category}`}>{category}</Link>}
-              <h1 className="text-4xl">{heading}</h1>
+              <h1 className="text-6xl">{heading}</h1>
             </div>
             {categories && (
               <div className="w-full">

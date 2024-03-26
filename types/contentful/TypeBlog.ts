@@ -1,7 +1,7 @@
-import type { Asset, Entry, EntryFields } from "contentful";
+import type { Asset, Entry, EntryFields, EntrySkeletonType } from "contentful";
 import type { TypeCategoryFields } from "./TypeCategory";
 
-export interface TypeBlogFields {
+export interface TypeBlogFields extends EntrySkeletonType {
   title: EntryFields.Symbol;
   slug: EntryFields.Symbol;
   summary: EntryFields.Symbol;

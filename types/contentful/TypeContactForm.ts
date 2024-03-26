@@ -1,8 +1,8 @@
-import type { Entry, EntryFields } from "contentful";
+import type { Entry, EntryFields, EntrySkeletonType } from "contentful";
 
-export interface TypeContactFormFields {
-    title: EntryFields.Symbol;
-    subTitle: EntryFields.Symbol;
+export interface TypeContactFormFields extends EntrySkeletonType {
+  title: EntryFields.Symbol;
+  subTitle: EntryFields.Symbol;
 }
 
 export type TypeContactForm = Entry<TypeContactFormFields>;
