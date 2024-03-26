@@ -7,22 +7,21 @@ import Comments from "../organisms/comments";
 import NewsletterSignUp from "../molecules/newsletterSignUp";
 import RelatedPosts from "../organisms/relatedPosts";
 import { TypeBlogFields } from "@/types/contentful";
+import { devLog } from "@/lib/utils";
 
 interface BlogPageProps {
   data: TypeBlogFields;
 }
 
 export default async function BlogPage({ data }: BlogPageProps) {
-  const {
-    category: { slug },
-    authorName,
-    publishDate,
-  } = data;
+  const { category, authorName, publishDate } = data;
 
   return (
     <RightColumnScrollInner styles="px-[60px]">
       <BreadCrumbHeader
-        category={slug}
+        // TODO: fix type issue here
+        // @ts-ignore
+        category={category.title}
         author={authorName}
         publishDate={publishDate || "Publish Date Not Found"}
         timeToRead="4"

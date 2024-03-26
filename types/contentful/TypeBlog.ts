@@ -9,7 +9,7 @@ export interface TypeBlogFields extends EntrySkeletonType {
   publishDate?: EntryFields.Date;
   image: Asset;
   authorName: EntryFields.Symbol;
-  category: TypeCategoryFields;
+  category: Entry<TypeCategoryFields>;
 }
 
 export type TypeBlog = Entry<TypeBlogFields>;
