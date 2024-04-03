@@ -10,6 +10,7 @@ import {
 import { ModeToggle } from "../atoms/darkModeToggle";
 import { cn } from "@/lib/utils";
 import { inter } from "@/app/fonts";
+import { ClockIcon, DotFilledIcon } from "@radix-ui/react-icons";
 
 interface BreadCrumbHeaderProps {
   category: string;
@@ -32,16 +33,24 @@ export default function BreadCrumbHeader({
         inter.className
       )}
     >
-      <div className="flex justify-between w-full">
-        <div className="">
+      <div className="flex flex-col md:flex-row justify-between w-full">
+        <div className="flex md:hidden w-full justify-end">
+          <ModeToggle />
+        </div>
+        <div className="mb-2 md:mb-0">
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
-                <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                <BreadcrumbLink href="/" className="text-xs md:text-sm">
+                  Home
+                </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
-                <BreadcrumbLink className="capitalize" href={`/${category}`}>
+                <BreadcrumbLink
+                  className="capitalize text-xs"
+                  href={`/${category}`}
+                >
                   {category}
                 </BreadcrumbLink>
               </BreadcrumbItem>
@@ -49,16 +58,33 @@ export default function BreadCrumbHeader({
           </Breadcrumb>
         </div>
         <div className="flex text-xs gap-4 items-center">
-          <div>{author}</div>
-          <div className="text-zinc-800/80 dark:text-white/90">
-            {new Date(publishDate).toDateString()}
-          </div>
-          <div className="text-zinc-800/80 dark:text-white/90">
-            {timeToRead} minute read
-          </div>
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <p className="text-xs">{author}</p>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator>
+                <DotFilledIcon />
+              </BreadcrumbSeparator>
+              <BreadcrumbItem>
+                <p className="text-xs">
+                  {new Date(publishDate).toDateString()}
+                </p>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator>
+                <DotFilledIcon />
+              </BreadcrumbSeparator>
+              <BreadcrumbItem>
+                <div className="flex items-center gap-1">
+                  <ClockIcon width={12} height={12} />
+                  <p className="text-xs">{timeToRead} minute read</p>
+                </div>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
         </div>
       </div>
-      <div>
+      <div className="hidden md:flex">
         <ModeToggle />
       </div>
     </div>

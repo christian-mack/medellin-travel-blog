@@ -48,10 +48,14 @@ export default function RightColumnScroll({
         <Image src={bgImg || mtnsImg} alt="" className="object-cover" fill />
         <div className="relative grid grid-cols-12 grid-rows-3 h-screen z-[2]">
           <Header />
-          <div className="col-span-12 row-start-3 flex flex-col justify-end px-[60px] pb-8">
-            <div className="w-full mb-6 text-white/90">
-              {category && <Link href={`/${category}`}>{category}</Link>}
-              <h1 className="text-6xl">{heading}</h1>
+          <div className="col-span-12 row-start-3 flex flex-col justify-end px-[20px] md:px-[60px] pb-8">
+            <div className="w-full md:mb-6 text-white/90">
+              {category && (
+                <Link className="text-sm" href={`/${category}`}>
+                  {category}
+                </Link>
+              )}
+              <h1 className="text-4xl md:text-6xl">{heading}</h1>
             </div>
             {categories && (
               <div className="w-full">
