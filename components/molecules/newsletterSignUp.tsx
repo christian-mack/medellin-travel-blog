@@ -1,13 +1,26 @@
 import { inter } from "@/app/fonts";
-import { cn } from "@/lib/utils";
+import { cn, devLog, devLogHeader } from "@/lib/utils";
 import { loops } from "@/utils/loops";
 
 export default function NewsletterSignUp() {
-  async function createNewSubscriber() {
+  async function createNewSubscriber(data: FormData) {
     "use server";
-    // Submit formData to your newsletter service.
-    const response = await loops.createContact("sfacmack@icloud.com");
-    console.log("Form Data Submitted", response);
+
+    const newSubscriber = {
+      email: data.get("email") as string,
+      properties: {
+        firstName: data.get("firstName") as string,
+        lastName: data.get("lastName") as string,
+        userGroup: data.get("userGroup") as string,
+      },
+    };
+
+    const response = await loops.createContact(
+      newSubscriber.email,
+      newSubscriber.properties
+    );
+
+    devLog([devLogHeader("newsletterSignUp: Form Data Submitted"), response]);
   }
 
   return (
@@ -36,6 +49,12 @@ export default function NewsletterSignUp() {
           type="email"
           name="email"
           placeholder="Enter your email"
+        />
+        <input
+          className="w-full mb-4 px-3 py-2 border border-gray-300 rounded"
+          type="hidden"
+          name="userGroup"
+          value="Website signups"
         />
         <button
           type="submit"
