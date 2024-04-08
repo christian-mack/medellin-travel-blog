@@ -1,28 +1,8 @@
+import createNewSubscriber from "@/actions/subscriptions";
 import { inter } from "@/app/fonts";
-import { cn, devLog, devLogHeader } from "@/lib/utils";
-import { loops } from "@/utils/loops";
+import { cn } from "@/lib/utils";
 
 export default function NewsletterSignUp() {
-  async function createNewSubscriber(data: FormData) {
-    "use server";
-
-    const newSubscriber = {
-      email: data.get("email") as string,
-      properties: {
-        firstName: data.get("firstName") as string,
-        lastName: data.get("lastName") as string,
-        userGroup: data.get("userGroup") as string,
-      },
-    };
-
-    const response = await loops.createContact(
-      newSubscriber.email,
-      newSubscriber.properties
-    );
-
-    devLog([devLogHeader("newsletterSignUp: Form Data Submitted"), response]);
-  }
-
   return (
     <div className="mx-auto my-10 rounded-lg">
       <h2 className="text-3xl font-semibold mb-6">
@@ -31,7 +11,11 @@ export default function NewsletterSignUp() {
       <p className={cn("text-gray-700 mb-4", inter.className)}>
         Get notified of the best deals on our WordPress themes.
       </p>
-      <form action={createNewSubscriber} className={inter.className}>
+      <form
+        action={createNewSubscriber}
+        method="POST"
+        className={inter.className}
+      >
         <input
           className="w-full mb-4 px-3 py-2 border border-gray-300 rounded"
           type="text"
