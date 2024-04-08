@@ -1,21 +1,65 @@
 version: 2.1
-orbs:
-  node: circleci/node@5.2.0
 jobs:
   build:
-    executor:
-      name: node/default
-      tag: '14.17.0'
+    working_directory: ~/app
+    docker:
+      - image: cimg/node:14.18.2
     steps:
       - checkout
-      - node/install-packages
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
       - run:
-          name: Build
+          name: Install Dependencies
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: Build project
           command: npm run build
       - run:
-          name: Run Tests
-          command: npm test
+          name: Export project
+          command: npm run export
+  test:
+    docker:
+      - image: cypress/base:14.17.0
+        environment:
+          ## this enables colors in the output
+          TERM: xterm
+    working_directory: ~/app
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
+            - v1-deps-{{ .Branch }}
+            - v1-deps
+      - run:
+          name: Install Dependencies
+          # npm installs the app dependencies
+          command: npm install && npm install -g serve
+      - save_cache:
+          key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
+          paths:
+            - ~/.cache ## cache both npm and Cypress!
+      - run: npm run test:e2e
+  deploy:
+    working_directory: ~/app
+    docker:
+      - image: curlimages/curl:7.81.0
+    # use the webhook from netlify that was added as a env var to the circleci project to trigger the build
+    steps:
+      - run:
+          name: Deploy
+          command: curl -X POST -d {} $DEPLOY_WEBHOOK
 workflows:
   build_and_test:
     jobs:
       - build
+      - test
+      # deploy only if the build and the test steps go through
+      - deploy:
+          requires:
+            - build
+            - test
