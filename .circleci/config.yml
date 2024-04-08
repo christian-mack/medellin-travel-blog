@@ -1,7 +1,21 @@
 version: 2.1
 orbs:
   node: circleci/node@5.2.0
+jobs:
+  build:
+    executor:
+      name: node/default
+      tag: '14.17.0'
+    steps:
+      - checkout
+      - node/install-packages
+      - run:
+          name: Build
+          command: npm run build
+      - run:
+          name: Run Tests
+          command: npm test
 workflows:
-  node-tests:
+  build_and_test:
     jobs:
-      - node/test
+      - build
