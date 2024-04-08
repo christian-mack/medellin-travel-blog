@@ -47,7 +47,7 @@ export default function NewsletterSignUp() {
           →
         </button>
         <label className="flex items-center mt-4">
-          <input type="checkbox" name="consentGiven" className="mr-2" />
+          <input type="checkbox" name="consentGiven" className="mr-2 text-xs" />
           By checking this box, you confirm that you have read and are agreeing
           to our terms of use regarding the storage of the data submitted
           through this form.
