@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.medellintravelblog.com
+
+# Sitemaps
+Sitemap: https://www.medellintravelblog.com/sitemap.xml
