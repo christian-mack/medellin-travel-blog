@@ -13,6 +13,8 @@ export async function fetchGraphQL({
   slug,
   tags,
 }: fetchProps) {
+  const formattedSlug = slug === "/" ? "" : slug;
+
   return fetch(
     `${process.env.CONTENTFUL_BASE_URL}/${process.env.CONTENTFUL_SPACE_ID}`,
     {
@@ -34,7 +36,7 @@ export async function fetchGraphQL({
   )
     .then((response) => response.json())
     .finally(() => {
-      revalidatePath(`/${slug}`);
+      revalidatePath(`/${formattedSlug}`);
       revalidateTag(tags[0]);
     });
 }
