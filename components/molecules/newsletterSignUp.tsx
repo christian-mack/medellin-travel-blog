@@ -11,11 +11,7 @@ export default function NewsletterSignUp() {
       <p className={cn("text-gray-700 mb-4", inter.className)}>
         Get notified of the best deals on our WordPress themes.
       </p>
-      <form
-        action={createNewSubscriber}
-        method="POST"
-        className={inter.className}
-      >
+      <form action={createNewSubscriber} className={inter.className}>
         <input
           className="w-full mb-4 px-3 py-2 border border-gray-300 rounded"
           type="text"

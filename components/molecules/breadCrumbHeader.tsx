@@ -41,7 +41,7 @@ export default function BreadCrumbHeader({
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
-                <BreadcrumbLink href="/" className="text-xs md:text-sm">
+                <BreadcrumbLink href="/" className="text-xs">
                   Home
                 </BreadcrumbLink>
               </BreadcrumbItem>

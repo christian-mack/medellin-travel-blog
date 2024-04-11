@@ -1,10 +1,5 @@
 import { renderComponentByTypename } from "@/utils/contentful";
-import {
-  getAllPages,
-  getPageBySlug,
-  getPagesBySlug,
-  getPagesByType,
-} from "@/lib/contentful/page";
+import { getPageBySlug, getPagesByType } from "@/lib/contentful/page";
 import { notFound } from "next/navigation";
 import { devLog, devLogHeader } from "@/lib/utils";
 import RightColumnScroll from "@/components/templates/rightColumnScroll";
@@ -23,11 +18,12 @@ export default async function DynamicPage({
   if (!page) {
     notFound();
   }
-  devLog(["\n PAGE: [slug2] \n\n", page]);
 
   switch (page.type) {
     case "Blog":
       const blogData = await getBlogPageBySlug(params.slug2);
+      const page = await getPagesByType("Blog");
+
       return (
         <RightColumnScroll
           heading={blogData.title}

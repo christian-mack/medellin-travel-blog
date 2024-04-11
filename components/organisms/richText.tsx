@@ -2,7 +2,8 @@ import { BLOCKS, MARKS } from "@contentful/rich-text-types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { ReactNode } from "react";
 import { bebas, inter } from "@/app/fonts";
-import { cn } from "@/lib/utils";
+import { cn, devLog, devLogHeader } from "@/lib/utils";
+import Image from "next/image";
 
 export const RichText = ({ data }: { data: any }) => {
   const renderData = documentToReactComponents(data, {
@@ -47,6 +48,21 @@ export const RichText = ({ data }: { data: any }) => {
       [BLOCKS.PARAGRAPH]: (node: any, children: ReactNode) => (
         <p className="text-[16px] mb-[32px]">{children}</p>
       ),
+      [BLOCKS.EMBEDDED_ASSET]: (node: any, children: ReactNode) => {
+        const { data } = node;
+        // devLog([devLogHeader("richText.tsx: embeddedAsset"), data.target]);
+        // TODO: add meaningful alt description
+        return (
+          <div className="relative w-full h-full mb-6">
+            <Image
+              src="https://github.com/shadcn.png"
+              alt=""
+              height={525}
+              width={525}
+            />
+          </div>
+        );
+      },
     },
     renderText: (text) => {
       return text.split("\n").reduce((children: any, textSegment, index) => {

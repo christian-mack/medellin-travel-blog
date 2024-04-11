@@ -6,7 +6,7 @@ function extractPageEntries(fetchResponse: any) {
 }
 
 export async function getAllPages(limit = 50, isDraftMode = false) {
-  const pages = await fetchGraphQL({
+  const pages: any = await fetchGraphQL({
     query: `query {
           pageCollection(limit: ${limit}, preview: ${
             isDraftMode ? "true" : "false"
@@ -28,7 +28,7 @@ export async function getPagesByType(
   type: "General" | "Blog",
   isDraftMode = false
 ) {
-  const pages = await fetchGraphQL({
+  const pages: any = await fetchGraphQL({
     query: `query {
           pageCollection(where:{type: "${type}"}, limit: 50, preview: ${
             isDraftMode ? "true" : "false"
@@ -46,7 +46,7 @@ export async function getPagesByType(
 }
 
 export async function getPagesBySlug(slug: string, isDraftMode = false) {
-  const pages = await fetchGraphQL({
+  const pages: any = await fetchGraphQL({
     query: `query {
           pageCollection(where:{slug: "${slug}"}, limit: 50, preview: ${
             isDraftMode ? "true" : "false"
@@ -64,7 +64,7 @@ export async function getPagesBySlug(slug: string, isDraftMode = false) {
 }
 
 export async function getPageBySlug(slug: string, isDraftMode = false) {
-  const page = await fetchGraphQL({
+  const page: any = await fetchGraphQL({
     query: `query {
           pageCollection(where:{slug: "${slug}"}, limit: 1, preview: ${
             isDraftMode ? "true" : "false"
