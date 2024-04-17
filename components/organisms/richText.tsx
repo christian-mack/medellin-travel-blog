@@ -8,9 +8,11 @@ import Image from "next/image";
 export const RichText = ({ data }: { data: any }) => {
   const renderData = documentToReactComponents(data, {
     renderMark: {
-      [MARKS.BOLD]: (text: any) => <p className="font-bold">{text}</p>,
-      [MARKS.ITALIC]: (text: any) => <p className="italic">{text}</p>,
-      [MARKS.UNDERLINE]: (text: any) => <p className="underline">{text}</p>,
+      [MARKS.BOLD]: (text: any) => <span className="font-bold">{text}</span>,
+      [MARKS.ITALIC]: (text: any) => <span className="italic">{text}</span>,
+      [MARKS.UNDERLINE]: (text: any) => (
+        <span className="underline">{text}</span>
+      ),
       [MARKS.SUBSCRIPT]: (text: any) => <sub>{text}</sub>,
       [MARKS.SUPERSCRIPT]: (text: any) => <sup>{text}</sup>,
     },
