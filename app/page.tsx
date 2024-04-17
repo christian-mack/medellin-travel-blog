@@ -2,10 +2,16 @@ import { Post } from "@/components/molecules/post";
 import RightColumnScroll, {
   RightColumnScrollBase,
 } from "@/components/templates/rightColumnScroll";
+import { fetchPages } from "@/contentful/helpers/page";
 import { getPagesByType } from "@/lib/contentful/page";
+import { devLog, devLogHeader } from "@/lib/utils";
 
 export default async function Index() {
   const allBlogPages = await getPagesByType("Blog");
+
+  const pages = await fetchPages({ preview: false });
+
+  devLog([devLogHeader("Index: new pages implementation"), pages]);
 
   return (
     <RightColumnScrollBase>
