@@ -16,7 +16,6 @@ export default async function Index() {
   return (
     <RightColumnScrollBase>
       <RightColumnScroll heading="Embrace adventure in the city of eternal spring.">
-        <></>
         {allBlogPages.map((page: any) => {
           const {
             title,
